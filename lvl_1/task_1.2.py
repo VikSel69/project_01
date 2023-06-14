@@ -24,14 +24,12 @@ my_favorite_songs = [
 # Решение задачи 1.2 пункт А
 
 sum_time = datetime.timedelta()
-i = 0
 
-while i < 3:
+for i in range(3):
     sound_time = random.choice(my_favorite_songs)[1]
     time_to_min = int(sound_time)
     time_to_sec = round((sound_time - time_to_min) * 100)
     sum_time += datetime.timedelta(minutes=time_to_min, seconds=time_to_sec)
-    i += 1
 
 print(f'Три песни звучат {sum_time} минут')
 
@@ -56,17 +54,15 @@ my_favorite_songs_dict = {
 
 sum_time = datetime.timedelta()
 key_lst = []
-i = 0
 
 for key in my_favorite_songs_dict:
     key_lst.append(key)
 
-while i < 3:
+for i in range(3):
     sound_time = my_favorite_songs_dict[random.choice(key_lst)]
     time_to_min = int(sound_time)
     time_to_sec = round((sound_time - time_to_min) * 100)
     sum_time += datetime.timedelta(minutes=time_to_min, seconds=time_to_sec)
-    i += 1
 
 print(f'Три песни звучат {sum_time} минут')
 
