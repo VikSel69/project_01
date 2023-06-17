@@ -20,4 +20,4 @@ def quarter_of(month: int):
     return f'месяц {month} ({MONTHS_DCT[month - 1][0]}) является частью {MONTHS_DCT[month - 1][1]} квартала'
 
 
-print(quarter_of(11))
+# print(quarter_of(11))
