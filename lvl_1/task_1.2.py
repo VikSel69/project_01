@@ -1,5 +1,6 @@
 import random
 import datetime
+import math
 
 # Задача 1.2.
 
@@ -25,11 +26,9 @@ my_favorite_songs = [
 
 sum_time = datetime.timedelta()
 
-for i in range(3):
-    sound_time = random.choice(my_favorite_songs)[1]
-    time_to_min = int(sound_time)
-    time_to_sec = round((sound_time - time_to_min) * 100)
-    sum_time += datetime.timedelta(minutes=time_to_min, seconds=time_to_sec)
+for i in random.sample(my_favorite_songs, 3):
+    time_to_sec, time_to_min = math.modf(i[1])
+    sum_time += datetime.timedelta(minutes=time_to_min, seconds=time_to_sec * 100)
 
 print(f'Три песни звучат {sum_time} минут')
 
@@ -59,10 +58,8 @@ for key in my_favorite_songs_dict:
     key_lst.append(key)
 
 for i in range(3):
-    sound_time = my_favorite_songs_dict[random.choice(key_lst)]
-    time_to_min = int(sound_time)
-    time_to_sec = round((sound_time - time_to_min) * 100)
-    sum_time += datetime.timedelta(minutes=time_to_min, seconds=time_to_sec)
+    time_to_sec, time_to_min = math.modf(my_favorite_songs_dict[random.choice(key_lst)])
+    sum_time += datetime.timedelta(minutes=time_to_min, seconds=time_to_sec * 100)
 
 print(f'Три песни звучат {sum_time} минут')
 
