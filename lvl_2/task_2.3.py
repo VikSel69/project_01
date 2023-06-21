@@ -15,11 +15,10 @@ def switch_it_up(number: int):
     :param number: вводимая цифра типа int.
     :return: значение вводимоц цифры пропистью типа str.
     """
+    NAME_NUMBER = ('Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine')
     try:
-        NAME_NUMBER = ('Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine')
         return NAME_NUMBER[number]
     except IndexError:
         return 'None'
 
-
-# print(switch_it_up(100))
+print(switch_it_up(5))
