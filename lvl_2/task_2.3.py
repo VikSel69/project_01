@@ -21,4 +21,4 @@ def switch_it_up(number: int):
     except IndexError:
         return 'None'
 
-print(switch_it_up(5))
+# print(switch_it_up(5))

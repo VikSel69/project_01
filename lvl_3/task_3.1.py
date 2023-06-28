@@ -25,3 +25,70 @@
 #   - отображать в таблице/матрице название колонки необязательно!
 #   - использовать готовые классы numpy.array() и pandas.DataFrame() запрещено!
 #   - проявите фантазию :)
+
+# Решение задачи
+
+from itertools import repeat
+
+
+class Matrix:
+
+    def __init__(self, row=10, column=10):
+        """Метод инициализации аргументов класса при создании объекта."""
+        self.mtr = [[i for i in repeat(None, column)] for j in range(row)]
+
+    def __str__(self):
+        """Метод вывода состояния класса в виде строки."""
+        m_str = ''
+        for i in self.mtr:
+            m_str = m_str + '\n' + ''.join(str(f'{i}'))
+        return m_str
+
+    def add_elm(self, num: int):
+        """Метод добавляет элементы в свободные ячейки матрицы."""
+        try:
+            int(num)
+            for i in range(len(self.mtr)):
+                for j in range(len(self.mtr[i])):
+                    if self.mtr[i][j] is None:
+                        self.mtr[i][j] = num
+                        return f'Элемент добавлен по адресу: [{i}],[{j}].'
+            return 'Не найдены свободные ячейки в матрице.'
+        #       Не могу понять почему при исключении выводиться дополнительно к указанному
+        #       сообщению еще строка 'None'
+        except ValueError:
+            print('Параметр метода является не допустимым.')
+
+    def get_elm(self, row: int, column: int):
+        """Метод возвращающий элемент по указанному в параметре адресу."""
+        try:
+            return self.mtr[row][column]
+        except IndexError:
+            print('Параметры метода выходят за область матрицы.')
+
+    def set_elm(self, row: int, column: int, num: int):
+        """Метод изменяющий или добавляющий элемент в указанной ячейке матрицы."""
+        try:
+            self.mtr[row][column] = num
+        except (ValueError, IndexError):
+            print('Ошибка замены элемента в матрице по указанному адресу.')
+
+    def del_elm(self, row: int, column: int):
+        """Метод удаляющий элемент в матрице по указанному адресу и возвращающий удаляемый элемент."""
+        try:
+            elm = self.mtr[row][column]
+            self.mtr[row][column] = None
+            return elm
+        except IndexError:
+            print('Параметры метода выходят за область матрицы.')
+
+
+#  Часть кода для выполнения тестов проверки выполнения заданных условий задачи.
+
+mtr = Matrix()
+print(mtr.add_elm(73))
+mtr.set_elm(2, 3, 33)
+print(mtr.get_elm(2, 3))
+print(mtr.del_elm(2, 3))
+mtr.set_elm(5, 5, 555)
+print(mtr)
